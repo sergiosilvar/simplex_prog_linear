@@ -13,27 +13,12 @@ class SimplexAFS():
     Implementação do algoritmo Simplex conforme livro "Algorithms" de Christos 
     Papadimitriou et all.
     '''
-
-    MAXIMIZAR = 'MAX'
-    MINIMIZAR = 'MIN'
     
     INTEIRO_MIN = -99999
     INTEIRO_MAX = 99999
     APROX_ZERO = 0.01
     
 
-    def __verifica_arquivo(self, nome_arquivo):
-        arq = open(nome_arquivo,'r')
-        conteudo = arq.readline()
-        arq.close()
-        if conteudo.upper().find(self.MAXIMIZAR) == -1 and \
-            conteudo.upper().find(self.MINIMIZAR) == -1:
-            raise SimplexAFSErro('Arquivo não determina se é '\
-                                 'uma Maximização ou Minimização!')
-        else:
-            if conteudo.upper().find('MAX') > -1: self.acao = 'MAX' 
-            if conteudo.upper().find('MIN') > -1: self.acao = 'MIN' 
-            return True
     
     def __init__(self, nome_arquivo):
         '''
@@ -41,24 +26,20 @@ class SimplexAFS():
         @param nome_arquivo: arquivo que contém o sistema em forma de matriz.
         '''
         
-        if self.__verifica_arquivo(nome_arquivo):
-            # Verifica corretude do arquivo.
-            self.__verifica_arquivo(nome_arquivo)
-            
-            # Carrea a matriz inteira do arquivo.
-            tableau = np.loadtxt(nome_arquivo)
-            
-            # Determina o número de variáveis.
-            qtd_variaveis = len(tableau[0]) - 1
-            
-            # Identifica a função objetivo.
-            self.funcao_objetivo = tableau[0][:qtd_variaveis]
-            
-            # Identifica as restrições.
-            self.restricoes = tableau[1:, :qtd_variaveis]
-            
-            # Identifica os valores das restrições.
-            self.valores = tableau[1:, len(tableau[0]) - 1]
+        # Carrea a matriz inteira do arquivo.
+        tableau = np.loadtxt(nome_arquivo)
+        
+        # Determina o número de variáveis.
+        qtd_variaveis = len(tableau[0]) - 1
+        
+        # Identifica a função objetivo.
+        self.funcao_objetivo = tableau[0][:qtd_variaveis]
+        
+        # Identifica as restrições.
+        self.restricoes = tableau[1:, :qtd_variaveis]
+        
+        # Identifica os valores das restrições.
+        self.valores = tableau[1:, len(tableau[0]) - 1]
         
 
     def __monta_expressao(self, expr, coef, indice):
@@ -76,7 +57,7 @@ class SimplexAFS():
         
         if titulo != None:
             print titulo.upper()
-        expressao = self.acao + ' '
+        expressao =  ''
         for i in range(qtd_var):
             expressao = simplex_obj.__monta_expressao(expressao, simplex_obj.funcao_objetivo[i], i)
         print 'Funcao Objetivo:\n\t' + expressao 
@@ -146,12 +127,8 @@ class SimplexAFS():
         '''
         
         for v in self.funcao_objetivo:
-            if self.acao == self.MAXIMIZAR:
-                if v > 0: 
-                    return False
-            if self.acao == self.MINIMIZAR:
-                if v < 0: 
-                    return False
+            if v > 0: 
+                return False
         return True
         
     def __copiar(self):
@@ -216,7 +193,7 @@ class SimplexAFS():
         expressao = ''
         for i in range(self.qtd_variaveis()):
             expressao = self.__monta_expressao(expressao, self.solucao[i], i)
-        print 'Funcao Objetivo:\n\t' + self.acao+' '+ expressao 
+        print 'Funcao Objetivo:\n\t' + expressao 
         
         valor = 0
         for i in range(len(self.copia.funcao_objetivo)):
