@@ -7,6 +7,7 @@ Created on 27/05/2013
 '''
 from SimplexAFS import SimplexAFS
 import sys
+from numpy.linalg.linalg import LinAlgError
 
 if __name__ == '__main__':
     n = len(sys.argv)
@@ -15,7 +16,9 @@ if __name__ == '__main__':
         print 'Use: python simplex.py <nome do arquivo>'
     else:
         nome_arquivo = sys.argv[1]
-        print '\n\nSIMPLEX - Arquivo: ' + nome_arquivo
+        print '\n================================================================================'
+        print '\n                   SIMPLEX - Arquivo: ' + nome_arquivo
+        print '\n--------------------------------------------------------------------------------\n'
         
         try:
             s = SimplexAFS(nome_arquivo)
@@ -24,3 +27,6 @@ if __name__ == '__main__':
             s.imprimir_solucao()
         except IOError:
             print 'ERRO: Nome do arquivo invalido: \"' + nome_arquivo + '\"'
+        except LinAlgError: 
+            print 'ERRO: Nao foi possivel encontrar uma solucao. Verifique conteudo do arquivo.'
+        print '\n================================================================================'
