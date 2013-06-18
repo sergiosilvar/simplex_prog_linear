@@ -73,7 +73,7 @@ Verifique conteudo do arquivo.
 
 
 
-#### Formato do Arquivo de Entrada
+### Formato do Arquivo de Entrada
 - O conteúdo do aqruivo é uma matriz onde os elementos são separados por um ou mais espaços;
 - O sistema no arquivo deve representar um sistema para maximização;
 - É aceito qualquer ou nenhuma extensão, desde que o arquivo seja do tipo texto puro.
@@ -81,12 +81,10 @@ Verifique conteudo do arquivo.
 - Os elementos na matriz são os coeficientes da função objetivo, coeficientes das restrições, e valores das restrições.
   + 1.a linha: Coeficientes da função objetivo, seguido pelo valor 0.
   + 2.a linha em diante: Coeficientes das restrições, seguido pelo valor  das restrições.
- 
-#### Observações 
- - Em qualquer linha ou posição, comentários são aceitos desde que iniciados com o caracter "#".
- - Caso a função objetivo ou uma restrição não possua determinada variável, sua posição na matriz deve assumir como coeficiente o valor 0.
+- Em qualquer linha ou posição, comentários são aceitos desde que iniciados com o caracter "#".
+- Caso a função objetivo ou uma restrição não possua determinada variável, sua posição na matriz deve assumir como coeficiente o valor 0.
 
-### Exemplo
+#### Exemplo de um arquivo de entrada
 
 <pre>
 2 5  0 #Funcao objetivo com duas variáveis. Necessário colocar um '0' ao final para que esta linha contenha o mesmo número de colunas que as restriões seguidas .
