@@ -31,11 +31,11 @@ Para utilizar o algorimto é necessário os seguintes softwares:
  O algoritmo será executado e se houver uma solução uma saída como a abaixo será exibida:
  
  <pre>
- ================================================================================
+===============================================================
 
-                   SIMPLEX - Arquivo: exemplo.txt
+             SIMPLEX - Arquivo: exemplo.txt
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------
 
 SISTEMA ORIGINAL
 Funcao Objetivo:
@@ -50,18 +50,17 @@ SOLUCAO:
 Funcao Objetivo:
         +1.0*x_0+4.0*x_1
 Valor: 22.0
-
-================================================================================
+================================================================
 </pre>
  
 Caso o arquivo esteja mal formatado ou o sistema não tenha solução possível, será exibida a saída:
 
 <pre>
-================================================================================
+================================================================
 
                    SIMPLEX - Arquivo: pag_204.txt
 
---------------------------------------------------------------------------------
+----------------------------------------------------------------
 
 ERRO: Nao foi possivel encontrar uma solucao. Verifique conteudo do arquivo.
 
