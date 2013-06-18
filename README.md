@@ -29,8 +29,8 @@ Para utilizar o algorimto é necessário os seguintes softwares:
  **python simplex.py arquivo_de_entrada**
  
  O algoritmo será executado e se houver uma solução uma saída como a abaixo será exibida:
- 
-<pre>
+
+<pre><code>
 ===============================================================
 
              SIMPLEX - Arquivo: exemplo.txt
@@ -51,9 +51,7 @@ Funcao Objetivo:
         +1.0*x_0+4.0*x_1
 Valor: 22.0
 ================================================================
-
-</pre>
- 
+</code></pre>
 
 Caso o arquivo esteja mal formatado ou o sistema não tenha solução possível, será exibida a saída:
 
@@ -87,7 +85,7 @@ Verifique conteudo do arquivo.
 #### Exemplo de um arquivo de entrada
 
 <pre>
-2 5  0 #Funcao objetivo com duas variáveis. Necessário colocar um '0' ao final para que esta linha contenha o mesmo número de colunas que as restriões seguidas .
+2 5  0 #Funcao objetivo com duas variáveis. Necessário colocar um '0' ao final.
 2 -1 4	#1.a inequacao
 1 2 9	#2.a inequacao
 -1 1 3 	#3.a inequacao
