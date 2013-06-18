@@ -51,6 +51,7 @@ Funcao Objetivo:
         +1.0*x_0+4.0*x_1
 Valor: 22.0
 ================================================================
+
 </pre>
  
 Caso o arquivo esteja mal formatado ou o sistema não tenha solução possível, será exibida a saída:
