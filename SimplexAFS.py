@@ -10,7 +10,7 @@ import copy
 import numpy as np
 class SimplexAFS():
     '''
-    Implementação do algoritmo Simplex conforme livro "Algorithms" de Christos 
+    Implementaï¿½ï¿½o do algoritmo Simplex conforme livro "Algorithms" de Christos 
     Papadimitriou et all.
     '''
     
@@ -22,23 +22,23 @@ class SimplexAFS():
     
     def __init__(self, nome_arquivo):
         '''
-        Inicialização da instância.
-        @param nome_arquivo: arquivo que contém o sistema em forma de matriz.
+        Inicializaï¿½ï¿½o da instï¿½ncia.
+        @param nome_arquivo: arquivo que contï¿½m o sistema em forma de matriz.
         '''
         
         # Carrea a matriz inteira do arquivo.
         tableau = np.loadtxt(nome_arquivo)
         
-        # Determina o número de variáveis.
+        # Determina o nï¿½mero de variï¿½veis.
         qtd_variaveis = len(tableau[0]) - 1
         
-        # Identifica a função objetivo.
+        # Identifica a funï¿½ï¿½o objetivo.
         self.funcao_objetivo = tableau[0][:qtd_variaveis]
         
-        # Identifica as restrições.
+        # Identifica as restriï¿½ï¿½es.
         self.restricoes = tableau[1:, :qtd_variaveis]
         
-        # Identifica os valores das restrições.
+        # Identifica os valores das restriï¿½ï¿½es.
         self.valores = tableau[1:, len(tableau[0]) - 1]
         
 
@@ -49,7 +49,7 @@ class SimplexAFS():
 
     def __imprimir_sistema(self, simplex_obj,titulo=None):
         '''
-        Imprime em texto a função objetivo e restrições.
+        Imprime em texto a funï¿½ï¿½o objetivo e restriï¿½ï¿½es.
         '''
     
         qtd_var = simplex_obj.qtd_variaveis() 
@@ -63,7 +63,7 @@ class SimplexAFS():
         print 'Funcao Objetivo:\n\t' + expressao 
         
         print 'Restricoes'
-        ''' As restrições são inequações definidas a partir da segunda linha.'''
+        ''' As restriï¿½ï¿½es sï¿½o inequaï¿½ï¿½es definidas a partir da segunda linha.'''
         for i in range(qtd_restr): 
             expressao = ''
             for j in range(qtd_var):
@@ -77,17 +77,17 @@ class SimplexAFS():
 
     def qtd_variaveis(self):
         '''
-        Quantidade de variáveis "x_i" do sistema.
-        Nesta implementação é o tamanho do array unidimensional 
+        Quantidade de variï¿½veis "x_i" do sistema.
+        Nesta implementaï¿½ï¿½o ï¿½ o tamanho do array unidimensional 
         "self.funcao_objetivo".
         '''
         return len(self.funcao_objetivo)
 
     def __montar_matriz_transformacao(self):
-        ''' A Matriz de Transformação é a Matriz Identidade de dimenssão igual 
-        ao número de varíaveis, trocando-se a linha correspondente à variável 
-        ativa pelo simétrico dos coeficientes da restrição ativa divididos pelo 
-        valor da restrição ativa . 
+        ''' A Matriz de Transformaï¿½ï¿½o ï¿½ a Matriz Identidade de dimenssï¿½o igual 
+        ao nï¿½mero de varï¿½aveis, trocando-se a linha correspondente ï¿½ variï¿½vel 
+        ativa pelo simï¿½trico dos coeficientes da restriï¿½ï¿½o ativa divididos pelo 
+        valor da restriï¿½ï¿½o ativa . 
         '''
         
         i_restr_ativ = self.__indice_restr_ativa()
@@ -96,7 +96,7 @@ class SimplexAFS():
         # Cria a matriz identidade.
         matriz_T = matlib.identity(self.qtd_variaveis())
         
-        #Coeficiente da variável ativa na restrição ativa.
+        #Coeficiente da variï¿½vel ativa na restriï¿½ï¿½o ativa.
         valor = self.restricoes[i_restr_ativ, i_var_ativ]
         
         matriz_T[i_var_ativ] = np.dot(self.restricoes[i_restr_ativ], (-1.0 / valor))
@@ -105,8 +105,8 @@ class SimplexAFS():
 
     def __indice_var_ativa(self):
         '''
-        Determina a variável de maior impacto.
-        @return: Posição, começando em 0, da variável com maior coeficiente na
+        Determina a variï¿½vel de maior impacto.
+        @return: Posiï¿½ï¿½o, comeï¿½ando em 0, da variï¿½vel com maior coeficiente na
         lista "self.funcao_objetivo".
         '''
         indice = self.INTEIRO_MIN
@@ -119,11 +119,11 @@ class SimplexAFS():
     
     def __pode_parar(self):
         '''
-        Determina se o critério de parada foi atingido.
+        Determina se o critï¿½rio de parada foi atingido.
         @return: 
-            True - todos os coeficientes da função objetivo for menor ou 
+            True - todos os coeficientes da funï¿½ï¿½o objetivo for menor ou 
                 igual a ZERO.
-            False - Algum coeficiente da função objetivo é maior que ZERO.
+            False - Algum coeficiente da funï¿½ï¿½o objetivo ï¿½ maior que ZERO.
         '''
         
         for v in self.funcao_objetivo:
@@ -133,15 +133,15 @@ class SimplexAFS():
         
     def __copiar(self):
         '''
-        Cria uma cópia desta instância.
+        Cria uma cï¿½pia desta instï¿½ncia.
         '''
         return copy.deepcopy(self)
     
 
     def __indice_restr_ativa(self):
         '''
-        A restrição ativa é a restrição de menor valor no array "self.valores".
-        @return: Índice da restrição ativa na lista "self.restricoes".
+        A restriï¿½ï¿½o ativa ï¿½ a restriï¿½ï¿½o de menor valor no array "self.valores".
+        @return: ï¿½ndice da restriï¿½ï¿½o ativa na lista "self.restricoes".
         '''
 
         x_i = self.restricoes[:, self.__indice_var_ativa()]
@@ -159,8 +159,8 @@ class SimplexAFS():
 
     def qtd_restricoes(self):
         '''
-        @return Qantidade de inequações que são as restrições do sistema.
-        Nesta implementação, é o número de linhas do array bidimensional 
+        @return Qantidade de inequaï¿½ï¿½es que sï¿½o as restriï¿½ï¿½es do sistema.
+        Nesta implementaï¿½ï¿½o, ï¿½ o nï¿½mero de linhas do array bidimensional 
         "self.restricoes".
         '''
         return len(self.restricoes)
@@ -170,21 +170,21 @@ class SimplexAFS():
     
     def __resolve_sitema_original(self):
         '''
-        Reolve o sistema de equações do problema original. As equações são
-            selecionadas se seu valor é ZERO no fim da execução do Simplex. 
-        @return: Tupla (x_0, x_1, ..., x_n) com os valores solução das variáveis do problema.
+        Reolve o sistema de equaï¿½ï¿½es do problema original. As equaï¿½ï¿½es sï¿½o
+            selecionadas se seu valor ï¿½ ZERO no fim da execuï¿½ï¿½o do Simplex. 
+        @return: Tupla (x_0, x_1, ..., x_n) com os valores soluï¿½ï¿½o das variï¿½veis do problema.
         '''
         
-        # Índice dos valores iguais a ZERO no fim do Simplex.
+        # ï¿½ndice dos valores iguais a ZERO no fim do Simplex.
         indices = np.where(self.valores == 0)
         
-        # Seleciona as equações originais conforme os índices.
+        # Seleciona as equaï¿½ï¿½es originais conforme os ï¿½ndices.
         equacoes = self.copia.restricoes[indices]
         
-        # Seleciona os valores originais das equações selecionadas.
+        # Seleciona os valores originais das equaï¿½ï¿½es selecionadas.
         valores = self.copia.valores[indices]
         
-        # Resolve e retorna tupla com soluções.
+        # Resolve e retorna tupla com soluï¿½ï¿½es.
         self.solucao =  np.linalg.solve(equacoes, valores)
     
     
@@ -209,7 +209,7 @@ class SimplexAFS():
             vetor = [0 for i in range(self.qtd_variaveis())]#O(v)
             vetor[i_var_ativa] = self.valores[i_restr_ativa] \
                 / self.restricoes[i_restr_ativa, i_var_ativa]
-            valores_T = self.valores - np.dot(self.restricoes, vetor) #O(multiplicação de matrizes)
+            valores_T = self.valores - np.dot(self.restricoes, vetor) #O(multiplicaï¿½ï¿½o de matrizes)
             self.valores = valores_T[0:len(valores_T)]
             for index, value in np.ndenumerate(self.valores):
                 if value < self.APROX_ZERO:
@@ -217,12 +217,12 @@ class SimplexAFS():
     
 
     def __transformar_restricoes(self, matriz_T):
-        restricoes_T = np.dot(self.restricoes, matriz_T) #O(multiplicação de matrizes)
+        restricoes_T = np.dot(self.restricoes, matriz_T) #O(multiplicaï¿½ï¿½o de matrizes)
         self.restricoes = restricoes_T.getA()
 
 
     def __transformar_funcao_objetivo(self, matriz_T):
-        funcao_obj_T = np.dot(self.funcao_objetivo, matriz_T) #O(multiplicação de matrizes)
+        funcao_obj_T = np.dot(self.funcao_objetivo, matriz_T) #O(multiplicaï¿½ï¿½o de matrizes)
         self.funcao_objetivo = funcao_obj_T.getA()[0]
 
 
@@ -235,28 +235,28 @@ class SimplexAFS():
 
     def resolver(self):
         '''
-        Resolve o Simplex.
-        Complexidade: 
+        Executa o algoritmo Simplex.
+        
         '''
 
         
-        # Armazena sistema original para uso após laço principal.
+        # Armazena sistema original para uso apï¿½s laï¿½o principal.
         self.copia = self.__copiar()
         
         
-        # Laço principal.
+        # Laï¿½o principal.
         while not self.__pode_parar(): #O(v).
            
-            # Monta a matriz de transformação.
-            matriz_T = self.__montar_matriz_transformacao()#O(multiplicação de matrizes)
+            # Monta a matriz de transformaï¿½ï¿½o.
+            matriz_T = self.__montar_matriz_transformacao()#O(multiplicaï¿½ï¿½o de matrizes)
             
-            # Transofrmação dos Valores das Restrições.
+            # Transofrmaï¿½ï¿½o dos Valores das Restriï¿½ï¿½es.
             self.__transformar_valores()
             
-            # Transformação das Restrições.
+            # Transformaï¿½ï¿½o das Restriï¿½ï¿½es.
             self.__transformar_restricoes(matriz_T)
                         
-            # Transformação da Função Objetivo.
+            # Transformaï¿½ï¿½o da Funï¿½ï¿½o Objetivo.
             self.__transformar_funcao_objetivo(matriz_T)
         
         
@@ -269,16 +269,5 @@ class SimplexAFSErro(Exception):
      def __str__(self):
          return repr(self.value)
             
-if __name__ == '__main__':
-#    exemplo_hardcoded()
-    s= SimplexAFS('exemplo.txt')
-    s.resolver()
-    s.imprimir_solucao()
-    s = SimplexAFS('pag_204.txt')
-    s.resolver()
-    s.imprimir_solucao()
-    
-    s = SimplexAFS('exemplo_internet.txt')
-    s.resolver()
-    s.imprimir_solucao()
+
     
