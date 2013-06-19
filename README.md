@@ -75,10 +75,10 @@ Verifique conteudo do arquivo.
 - O conteúdo do aqruivo é uma matriz onde os elementos são separados por um ou mais espaços;
 - O sistema no arquivo deve representar um sistema para maximização;
 - É aceito qualquer ou nenhuma extensão, desde que o arquivo seja do tipo texto puro.
-- Caso o nome do arquivo contenha espaços, colocá-lo entre aspas.
 - Os elementos na matriz são os coeficientes da função objetivo, coeficientes das restrições, e valores das restrições.
   + 1.a linha: Coeficientes da função objetivo, seguido pelo valor 0.
   + 2.a linha em diante: Coeficientes das restrições, seguido pelo valor  das restrições.
+  + As variáveis assumem valor -1, pois esta implementação entende todas as restrições como menor ou igual a 0.
 - Em qualquer linha ou posição, comentários são aceitos desde que iniciados com o caracter "#".
 - Caso a função objetivo ou uma restrição não possua determinada variável, sua posição na matriz deve assumir como coeficiente o valor 0.
 
@@ -90,5 +90,11 @@ Verifique conteudo do arquivo.
 1 2 9	#2.a inequacao
 -1 1 3 	#3.a inequacao
 </pre>
+
+## TODO
+Listamos abaixo algumas evoluções que podem ser feitas para melhorar esta implementação.
+
+- Dispensar digitação das restrições das variáveis básicas no arquivo de entrada.
+- Permitir entrar com problemas de minimização diretamente no arquivo, e o programa converter para maximização.
 
 Fim do README.md.
