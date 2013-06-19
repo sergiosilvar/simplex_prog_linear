@@ -1,0 +1,8 @@
+# max
+5 6 0
+0.2 0.3 1.8
+0.2 0.1 1.2
+0.3 0.3 2.4
+#-1 0 0
+#0 -1 0
+#https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCgQFjAA&url=http%3A%2F%2Fsubversion.assembla.com%2Fsvn%2Fpuc_minas%2F4%25C2%25BA%2520PERIODO%2FMATEMATICA%2520COMPUTACIONAL%2Flista%2520exercicios%2520revisao%2520simplex.doc&ei=f-mjUZrhMNPO0QHwmIHACA&usg=AFQjCNGsur9VDCAJ5HUsF9GB8hvIpCM0Ag&sig2=-S93oOSHqsU2Fc8DD9xMNQ
