@@ -1,9 +1,7 @@
 # -*- coding: iso-8859-15 -*-
 
 '''
-Created on 27/05/2013
-
-@author: sergio
+Exemplo de utilização da classe SimplexAFS.
 '''
 from SimplexAFS import SimplexAFS
 import sys
